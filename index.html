@@ -70,6 +70,7 @@ button:hover {
     line-height: 1.6;
     color: #541a66;
     white-space: pre-wrap;
+    display:none;
 }
 #contadorDias {
     margin-top: 40px;
@@ -98,7 +99,7 @@ button:hover {
 </div>
 
 <div id="content">
-    <h1>Feliz 3 meses amor da minha vida ❤️</h1>
+    <h1>Feliz 3 meses, amor da minha vida ❤️</h1>
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
     <div id="euTeAmo"></div>
     <div id="carta"></div>
@@ -114,7 +115,7 @@ function checkPassword() {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
     } else {
-        alert("ih neném, errou a senha 😔");
+        alert("como assim vc errou parceira? 🤨");
     }
 }
 
@@ -142,7 +143,7 @@ _______________♥
 ♥▒♥▒♥▒♥▒♥▒♥ EU TE AMO!♥▒♥▒♥▒♥▒♥▒♥
 ★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★`;
 
-// Texto “EU TE AMO = ♥” literal 700x
+// Texto “EU TE AMO = ♥” colorido, repetido 100x
 const euTeAmoBloco = `. EU TE AMO = ♥  
 . EU TE AMO = ♥  
 . EU TE AMO = ♥  
@@ -177,14 +178,28 @@ const euTeAmoBloco = `. EU TE AMO = ♥
 ...... EU TE AMO = ♥  
 ..... EU TE AMO = ♥\n`;
 
-// Repetir 200 vezes
 let euTeAmoText = "";
-for(let i=0;i<200;i++){
-    euTeAmoText += euTeAmoBloco;
+for(let i=0;i<100;i++){
+    if(i%2===0){
+        euTeAmoText += `<span style="color:#ff99ff;">${euTeAmoBloco}</span>`;
+    } else {
+        euTeAmoText += `<span style="color:#b300ff;">${euTeAmoBloco}</span>`;
+    }
 }
 
-// Carta com digitação
-const cartaText = `Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.
+const euTeAmoDiv = document.getElementById('euTeAmo');
+const cartaDiv = document.getElementById('carta');
+const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
+
+mostrarCartaBtn.onclick = () => {
+    mostrarCartaBtn.style.display = 'none';
+    euTeAmoDiv.style.display = 'block';
+    euTeAmoDiv.innerHTML = coracaoGigante + "<br>" + euTeAmoText;
+
+    // Inicia digitação da carta
+    cartaDiv.style.display = 'block';
+    let j = 0;
+    const cartaText = `Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.
 
 Eu olho pra nós duas e fico feliz. De verdade. Feliz por ter te encontrado, por ter você na minha vida, por ter alguém que me faz sentir tanto. Você virou aquele pensamento bom no meio do dia, aquela saudade gostosa, aquele sorriso que aparece do nada.
 
@@ -197,18 +212,6 @@ Eu não sei onde tudo isso vai chegar, mas eu sei que hoje, agora, nesse instant
 Três meses… e a certeza de que você é uma das melhores partes da minha vida.
 Eu te amo muito.`;
 
-const euTeAmoDiv = document.getElementById('euTeAmo');
-const cartaDiv = document.getElementById('carta');
-const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
-
-mostrarCartaBtn.onclick = () => {
-    mostrarCartaBtn.style.display = 'none';
-    euTeAmoDiv.style.display = 'block';
-    euTeAmoDiv.innerText = coracaoGigante + "\n" + euTeAmoText;
-
-    // Inicia digitação da carta
-    cartaDiv.style.display = 'block';
-    let j = 0;
     const interval2 = setInterval(() => {
         cartaDiv.innerText += cartaText[j];
         j++;
@@ -242,7 +245,7 @@ function atualizarContador() {
     const segundos = diff % 60;
 
     document.getElementById("contadorDias").innerText = 
-        `Tá me aguentando há${dias} dias, ${horas}h ${minutos}m ${segundos}s ❤️`;
+        `tá me aturando há ${dias} dias, ${horas}h ${minutos}m ${segundos}s ❤️`;
 }
 
 setInterval(atualizarContador, 1000);
