@@ -70,7 +70,6 @@ button:hover {
     line-height: 1.6;
     color: #541a66;
     white-space: pre-wrap;
-    display:none;
 }
 #contadorDias {
     margin-top: 40px;
@@ -93,7 +92,7 @@ button:hover {
 <body>
 
 <div id="passwordScreen">
-    <h1>Digite nossa data 💌</h1>
+    <h1>ih neném, qual é a senha?</h1>
     <input type="text" id="passwordInput" placeholder="dd/mm/aaaa">
     <button onclick="checkPassword()">Abrir surpresa</button>
 </div>
@@ -115,7 +114,7 @@ function checkPassword() {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
     } else {
-        alert("Senha incorreta! Tente novamente 💌");
+        alert("poxa amor, errou a senha 😔");
     }
 }
 
@@ -143,10 +142,9 @@ _______________♥
 ♥▒♥▒♥▒♥▒♥▒♥ EU TE AMO!♥▒♥▒♥▒♥▒♥▒♥
 ★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★`;
 
-// Gerar 300 linhas de "EU TE AMO = ♥"
+// Texto gigante "EU TE AMO = ♥" sem digitação
 let euTeAmoText = "";
 for(let k=0; k<300; k++){
-    if(k%10===0) euTeAmoText += "\n"; // pequena quebra de linha a cada 10
     euTeAmoText += ". EU TE AMO = ♥\n";
 }
 
@@ -171,23 +169,16 @@ const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
 mostrarCartaBtn.onclick = () => {
     mostrarCartaBtn.style.display = 'none';
     euTeAmoDiv.style.display = 'block';
-    let textoCompleto = coracaoGigante + "\n" + euTeAmoText;
-    let i = 0;
-    const interval1 = setInterval(() => {
-        euTeAmoDiv.innerText += textoCompleto[i];
-        i++;
-        if(i >= textoCompleto.length){
-            clearInterval(interval1);
-            // Inicia digitação da carta
-            cartaDiv.style.display = 'block';
-            let j = 0;
-            const interval2 = setInterval(() => {
-                cartaDiv.innerText += cartaText[j];
-                j++;
-                if(j >= cartaText.length) clearInterval(interval2);
-            }, 30);
-        }
-    }, 20);
+    euTeAmoDiv.innerText = coracaoGigante + "\n" + euTeAmoText;
+
+    // Inicia digitação da carta
+    cartaDiv.style.display = 'block';
+    let j = 0;
+    const interval2 = setInterval(() => {
+        cartaDiv.innerText += cartaText[j];
+        j++;
+        if(j >= cartaText.length) clearInterval(interval2);
+    }, 30);
 };
 
 // Função para criar corações flutuando
