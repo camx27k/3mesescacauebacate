@@ -56,7 +56,6 @@
         50% { transform: scale(1.15); }
         100% { transform: scale(1); }
     }
-    /* Coracoes flutuando */
     .heart {
         position: fixed;
         font-size: 24px;
@@ -68,7 +67,6 @@
         0% { transform: translateY(0) rotate(0deg); }
         100% { transform: translateY(-100vh) rotate(360deg); }
     }
-    /* Tela de senha */
     #passwordScreen {
         position: fixed;
         top:0;
@@ -90,7 +88,6 @@
         margin-top: 20px;
         outline: none;
     }
-    /* Botão da música */
     #musicBtn {
         position: fixed;
         top: 20px;
@@ -108,7 +105,6 @@
         background: #8a00cc;
         transform: scale(1.05);
     }
-    /* Carta */
     #carta {
         margin-top:40px;
         display:none;
@@ -131,51 +127,37 @@
 </head>
 <body>
 
-<!-- Tela de senha -->
 <div id="passwordScreen">
     <h1>Digite nossa data 💌</h1>
     <input type="text" id="passwordInput" placeholder="dd/mm/aaaa">
     <button onclick="checkPassword()">Abrir surpresa</button>
 </div>
 
-<!-- Conteudo da surpresa -->
 <div id="content">
     <h1>Feliz 3 meses ❤️</h1>
     <p>Amor, cada momento com você é mágico. Obrigado por estar comigo!</p>
-    
-    <!-- Foto integrada -->
     <img id="photo" src="Cacauebacate.png" alt="Nós duas">
-    
-    <!-- Botão da carta -->
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
-
-    <!-- Carta -->
     <div id="carta">
         <h2>Minha Carta 💌</h2>
         <p>
 Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.<br><br>
-
 Eu olho pra nós duas e fico feliz. De verdade. Feliz por ter te encontrado, por ter você na minha vida, por ter alguém que me faz sentir tanto. Você virou aquele pensamento bom no meio do dia, aquela saudade gostosa, aquele sorriso que aparece do nada.<br><br>
-
 Eu amo o seu jeito, até quando você fala rápido, quando ri sem conseguir parar, quando fica brava, quando fica com sono, quando fala do futuro… eu amo tudo. Eu gosto de você por inteiro, sem tirar nada.<br><br>
-
 Obrigado por ser carinho nos meus dias, por cuidar de mim do seu jeitinho, por me fazer sentir importante, vista e escolhida. Obrigado por estar comigo, por ficar, por acreditar no “nós”.<br><br>
-
 Eu não sei onde tudo isso vai chegar, mas eu sei que hoje, agora, nesse instante, eu quero você. E se o futuro deixar, vou querer amanhã, depois, por muito tempo.<br><br>
-
 Três meses… e a certeza de que você é uma das melhores partes da minha vida.<br>
 Eu te amo muito.
         </p>
     </div>
 </div>
 
-<!-- Música e botão -->
 <audio id="music" src="tevivo.mp3" loop></audio>
 <button id="musicBtn" onclick="toggleMusic()">🎵 Tocar</button>
 
 <script>
-    // Senha: coloque a data de vocês aqui
-    const password = "26/11/2025"; // exemplo
+    // Senha atualizada
+    const password = "27/08/2025";
 
     function checkPassword() {
         const input = document.getElementById("passwordInput").value;
@@ -187,7 +169,6 @@ Eu te amo muito.
         }
     }
 
-    // Música play/pause
     const music = document.getElementById('music');
     const musicBtn = document.getElementById('musicBtn');
 
@@ -201,7 +182,6 @@ Eu te amo muito.
         }
     }
 
-    // Coracoes flutuando
     const createHeart = () => {
         const heart = document.createElement('div');
         heart.className = 'heart';
@@ -214,7 +194,6 @@ Eu te amo muito.
     };
     setInterval(createHeart, 300);
 
-    // Mostrar carta
     const carta = document.getElementById('carta');
     const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
 
