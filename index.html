@@ -8,10 +8,8 @@
         margin: 0;
         padding: 0;
         font-family: "Arial", sans-serif;
-        background: linear-gradient(135deg, #f7e6ff, #ffe6f0);
+        background: #f7e6ff;
         text-align: center;
-        overflow-x: hidden;
-        overflow-y: hidden;
     }
     #content {
         display: none;
@@ -22,7 +20,6 @@
         font-size: 48px;
         color: #b300ff;
         margin-bottom: 20px;
-        /* animação removida para deixar fixo */
     }
     button {
         margin-top: 40px;
@@ -33,13 +30,6 @@
         border: none;
         border-radius: 12px;
         cursor: pointer;
-        transition: 0.3s;
-        box-shadow: 0 5px 15px rgba(179,0,255,0.4);
-    }
-    button:hover {
-        background: #8a00cc;
-        transform: scale(1.08) rotate(-2deg);
-        box-shadow: 0 8px 20px rgba(179,0,255,0.6);
     }
     #passwordScreen {
         position: fixed;
@@ -52,7 +42,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
     }
     #passwordScreen input {
         padding: 12px 20px;
@@ -72,14 +61,10 @@
         background: rgba(255,255,255,0.8);
         padding:30px;
         border-radius:20px;
-        box-shadow:0 10px 20px rgba(0,0,0,0.2);
         font-size: 20px;
         line-height: 1.6;
         color: #541a66;
         white-space: pre-wrap;
-    }
-    #mostrarCartaBtn {
-        margin-top:20px;
     }
 </style>
 </head>
@@ -106,7 +91,7 @@ function checkPassword() {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
     } else {
-        alert("como assim vc errou amor? :( ");
+        alert("Senha incorreta! Tente novamente 💌");
     }
 }
 
