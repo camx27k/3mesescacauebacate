@@ -30,13 +30,6 @@
         font-size: 22px;
         line-height: 1.6;
     }
-    #photo {
-        margin-top: 30px;
-        border-radius: 20px;
-        max-width: 90%;
-        height: auto;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
     button {
         margin-top: 40px;
         padding: 16px 30px;
@@ -91,23 +84,6 @@
         margin-top: 20px;
         outline: none;
     }
-    #musicBtn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        background: #b300ff;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        z-index: 1001;
-        box-shadow: 0 5px 15px rgba(179,0,255,0.4);
-    }
-    #musicBtn:hover {
-        background: #8a00cc;
-        transform: scale(1.05);
-    }
     #carta {
         margin-top:40px;
         display:none;
@@ -122,7 +98,7 @@
         font-size: 20px;
         line-height: 1.6;
         color: #541a66;
-        white-space: pre-wrap; /* mantém quebras de linha */
+        white-space: pre-wrap;
     }
     #mostrarCartaBtn {
         margin-top:20px;
@@ -139,14 +115,9 @@
 
 <div id="content">
     <h1>Feliz 3 meses ❤️</h1>
-    <p>Amor, cada momento com você é mágico. Obrigado por estar comigo!</p>
-    <img id="photo" src="Cacauebacate.png" alt="Nós duas">
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
     <div id="carta"></div>
 </div>
-
-<audio id="music" src="tevivo.mp3" loop></audio>
-<button id="musicBtn" onclick="toggleMusic()">🎵 Tocar</button>
 
 <script>
 const password = "27/08/2025";
@@ -161,20 +132,7 @@ function checkPassword() {
     }
 }
 
-// Música
-const music = document.getElementById('music');
-const musicBtn = document.getElementById('musicBtn');
-function toggleMusic() {
-    if (music.paused) {
-        music.play();
-        musicBtn.innerText = '🔇 Pausar';
-    } else {
-        music.pause();
-        musicBtn.innerText = '🎵 Tocar';
-    }
-}
-
-// Corações
+// Corações flutuantes
 const createHeart = () => {
     const heart = document.createElement('div');
     heart.className = 'heart';
