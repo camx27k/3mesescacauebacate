@@ -11,24 +11,18 @@
         background: linear-gradient(135deg, #f7e6ff, #ffe6f0);
         text-align: center;
         overflow-x: hidden;
-        overflow-y: hidden; /* evita scroll e mexer a página */
+        overflow-y: hidden;
     }
     #content {
         display: none;
         padding: 50px 20px;
         color: #541a66;
-        position: relative;
-        z-index: 1;
     }
     h1 {
         font-size: 48px;
         color: #b300ff;
         margin-bottom: 20px;
         animation: pulse 2s infinite;
-    }
-    p {
-        font-size: 22px;
-        line-height: 1.6;
     }
     button {
         margin-top: 40px;
@@ -52,17 +46,6 @@
         50% { transform: scale(1.15); }
         100% { transform: scale(1); }
     }
-    .heart {
-        position: fixed; /* corações não mexem a página */
-        font-size: 24px;
-        z-index: 0;
-        pointer-events: none;
-        animation: float 5s linear infinite;
-    }
-    @keyframes float {
-        0% { transform: translateY(0) rotate(0deg); }
-        100% { transform: translateY(-100vh) rotate(360deg); }
-    }
     #passwordScreen {
         position: fixed;
         top:0;
@@ -74,7 +57,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        z-index: 1002;
+        z-index: 1000;
     }
     #passwordScreen input {
         padding: 12px 20px;
@@ -131,19 +114,6 @@ function checkPassword() {
         alert("Senha incorreta! Tente novamente 💌");
     }
 }
-
-// Corações flutuantes
-const createHeart = () => {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerText = '❤️';
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
-    heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 7000);
-};
-setInterval(createHeart, 300);
 
 // Carta com digitação
 const cartaText = `Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.
