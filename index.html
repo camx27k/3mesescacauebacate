@@ -76,6 +76,9 @@
         margin-top: 40px;
         font-size: 22px;
         color: #541a66;
+        position: relative;
+        display: inline-block;
+        transition: color 0.5s;
     }
     .heart {
         position: fixed;
@@ -87,6 +90,24 @@
     @keyframes float {
         0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
         100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+    .contador-heart {
+        position: absolute;
+        font-size: 16px;
+        pointer-events: none;
+        animation: floatMini 1s forwards;
+    }
+    @keyframes floatMini {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-30px) scale(0.5); opacity: 0; }
+    }
+    .pulse {
+        animation: pulse 0.3s;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.4); }
+        100% { transform: scale(1); }
     }
 </style>
 </head>
@@ -156,16 +177,36 @@ function createHeart() {
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 6000);
 }
-
 setInterval(createHeart, 400);
 
-// Contador de dias
+// Contador de dias fofo
+const contador = document.getElementById("contadorDias");
+let lastColor = 0;
 function atualizarContador() {
     const inicio = new Date("2025-08-27");
     const hoje = new Date();
     const diffTime = hoje - inicio;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    document.getElementById("contadorDias").innerText = `Estamos juntos há ${diffDays} dias ❤️`;
+
+    // Pulinho
+    contador.classList.add("pulse");
+    setTimeout(() => contador.classList.remove("pulse"), 300);
+
+    // Cor aleatória
+    lastColor = (lastColor + 1) % 360;
+    contador.style.color = `hsl(${lastColor}, 80%, 40%)`;
+
+    // Atualizar texto
+    contador.innerText = `Estamos juntos há ${diffDays} dias ❤️`;
+
+    // Mini coração flutuando
+    const miniHeart = document.createElement("div");
+    miniHeart.className = "contador-heart";
+    miniHeart.innerText = "❤️";
+    miniHeart.style.left = (contador.offsetWidth / 2 + Math.random()*30 - 15) + "px";
+    miniHeart.style.top = "-10px";
+    contador.appendChild(miniHeart);
+    setTimeout(() => miniHeart.remove(), 1000);
 }
 
 setInterval(atualizarContador, 1000);
