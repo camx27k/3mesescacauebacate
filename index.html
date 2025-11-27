@@ -22,7 +22,7 @@
         font-size: 48px;
         color: #b300ff;
         margin-bottom: 20px;
-        animation: pulse 2s infinite;
+        /* animação removida para deixar fixo */
     }
     button {
         margin-top: 40px;
@@ -40,11 +40,6 @@
         background: #8a00cc;
         transform: scale(1.08) rotate(-2deg);
         box-shadow: 0 8px 20px rgba(179,0,255,0.6);
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.15); }
-        100% { transform: scale(1); }
     }
     #passwordScreen {
         position: fixed;
@@ -111,7 +106,7 @@ function checkPassword() {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
     } else {
-        alert("Senha incorreta! Tente novamente 💌");
+        alert("como assim vc errou amor? :( ");
     }
 }
 
