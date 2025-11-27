@@ -185,8 +185,12 @@ let lastColor = 0;
 function atualizarContador() {
     const inicio = new Date("2025-08-27");
     const hoje = new Date();
+    
+    // Diferença em milissegundos
     const diffTime = hoje - inicio;
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    // Converte para dias e adiciona 1 para contar o dia inicial
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
     // Pulinho
     contador.classList.add("pulse");
@@ -196,7 +200,7 @@ function atualizarContador() {
     lastColor = (lastColor + 1) % 360;
     contador.style.color = `hsl(${lastColor}, 80%, 40%)`;
 
-    // Atualizar texto
+    // Atualiza texto
     contador.innerText = `Estamos juntos há ${diffDays} dias ❤️`;
 
     // Mini coração flutuando
