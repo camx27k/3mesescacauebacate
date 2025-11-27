@@ -115,7 +115,7 @@ function checkPassword() {
     }
 }
 
-// Carta com digitação
+// Carta com efeito de digitação
 const cartaText = `Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.
 
 Eu olho pra nós duas e fico feliz. De verdade. Feliz por ter te encontrado, por ter você na minha vida, por ter alguém que me faz sentir tanto. Você virou aquele pensamento bom no meio do dia, aquela saudade gostosa, aquele sorriso que aparece do nada.
@@ -140,7 +140,7 @@ mostrarCartaBtn.onclick = () => {
         carta.innerText += cartaText[i];
         i++;
         if(i >= cartaText.length) clearInterval(interval);
-    }, 30);
+    }, 30); // velocidade da digitação
 };
 </script>
 
