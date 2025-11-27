@@ -10,12 +10,14 @@
         font-family: "Arial", sans-serif;
         background: linear-gradient(135deg, #f7e6ff, #ffe6f0);
         text-align: center;
-        overflow: hidden;
+        overflow-x: hidden;
     }
     #content {
         display: none;
         padding: 50px 20px;
         color: #541a66;
+        position: relative; /* conteúdo fixo, não mexe */
+        z-index: 1;
     }
     h1 {
         font-size: 48px;
@@ -57,9 +59,9 @@
         100% { transform: scale(1); }
     }
     .heart {
-        position: fixed;
+        position: absolute; /* não afeta o conteúdo principal */
         font-size: 24px;
-        z-index: 1000;
+        z-index: 0;
         pointer-events: none;
         animation: float 5s linear infinite;
     }
@@ -119,6 +121,7 @@
         font-size: 20px;
         line-height: 1.6;
         color: #541a66;
+        white-space: pre-wrap; /* mantém quebras de linha */
     }
     #mostrarCartaBtn {
         margin-top:20px;
@@ -136,74 +139,80 @@
 <div id="content">
     <h1>Feliz 3 meses ❤️</h1>
     <p>Amor, cada momento com você é mágico. Obrigado por estar comigo!</p>
-    <!-- Foto -->
     <img id="photo" src="Cacauebacate.png" alt="Nós duas">
-    <!-- Botão carta -->
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
-    <div id="carta">
-        <h2>Minha Carta 💌</h2>
-        <p>
-Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.<br><br>
-Eu olho pra nós duas e fico feliz. De verdade. Feliz por ter te encontrado, por ter você na minha vida, por ter alguém que me faz sentir tanto. Você virou aquele pensamento bom no meio do dia, aquela saudade gostosa, aquele sorriso que aparece do nada.<br><br>
-Eu amo o seu jeito, até quando você fala rápido, quando ri sem conseguir parar, quando fica brava, quando fica com sono, quando fala do futuro… eu amo tudo. Eu gosto de você por inteiro, sem tirar nada.<br><br>
-Obrigado por ser carinho nos meus dias, por cuidar de mim do seu jeitinho, por me fazer sentir importante, vista e escolhida. Obrigado por estar comigo, por ficar, por acreditar no “nós”.<br><br>
-Eu não sei onde tudo isso vai chegar, mas eu sei que hoje, agora, nesse instante, eu quero você. E se o futuro deixar, vou querer amanhã, depois, por muito tempo.<br><br>
-Três meses… e a certeza de que você é uma das melhores partes da minha vida.<br>
-Eu te amo muito.
-        </p>
-    </div>
+    <div id="carta"></div>
 </div>
 
-<!-- Música -->
 <audio id="music" src="tevivo.mp3" loop></audio>
 <button id="musicBtn" onclick="toggleMusic()">🎵 Tocar</button>
 
 <script>
-    // Senha atualizada
-    const password = "27/08/2025";
+const password = "27/08/2025";
 
-    function checkPassword() {
-        const input = document.getElementById("passwordInput").value;
-        if(input === password){
-            document.getElementById("passwordScreen").style.display = "none";
-            document.getElementById("content").style.display = "block";
-        } else {
-            alert("Senha incorreta! Tente novamente 💌");
-        }
+function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    if(input === password){
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    } else {
+        alert("Senha incorreta! Tente novamente 💌");
     }
+}
 
-    const music = document.getElementById('music');
-    const musicBtn = document.getElementById('musicBtn');
-
-    function toggleMusic() {
-        if (music.paused) {
-            music.play();
-            musicBtn.innerText = '🔇 Pausar';
-        } else {
-            music.pause();
-            musicBtn.innerText = '🎵 Tocar';
-        }
+// Música
+const music = document.getElementById('music');
+const musicBtn = document.getElementById('musicBtn');
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        musicBtn.innerText = '🔇 Pausar';
+    } else {
+        music.pause();
+        musicBtn.innerText = '🎵 Tocar';
     }
+}
 
-    const createHeart = () => {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerText = '❤️';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.fontSize = (20 + Math.random() * 20) + 'px';
-        heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 7000);
-    };
-    setInterval(createHeart, 300);
+// Corações
+const createHeart = () => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = '❤️';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+    heart.style.animationDuration = (3 + Math.random() * 4) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+};
+setInterval(createHeart, 300);
 
-    const carta = document.getElementById('carta');
-    const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
+// Carta com digitação
+const cartaText = `Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.
 
-    mostrarCartaBtn.onclick = () => {
-        carta.style.display = 'block';
-        mostrarCartaBtn.style.display = 'none';
-    }
+Eu olho pra nós duas e fico feliz. De verdade. Feliz por ter te encontrado, por ter você na minha vida, por ter alguém que me faz sentir tanto. Você virou aquele pensamento bom no meio do dia, aquela saudade gostosa, aquele sorriso que aparece do nada.
+
+Eu amo o seu jeito, até quando você fala rápido, quando ri sem conseguir parar, quando fica brava, quando fica com sono, quando fala do futuro… eu amo tudo. Eu gosto de você por inteiro, sem tirar nada.
+
+Obrigado por ser carinho nos meus dias, por cuidar de mim do seu jeitinho, por me fazer sentir importante, vista e escolhida. Obrigado por estar comigo, por ficar, por acreditar no “nós”.
+
+Eu não sei onde tudo isso vai chegar, mas eu sei que hoje, agora, nesse instante, eu quero você. E se o futuro deixar, vou querer amanhã, depois, por muito tempo.
+
+Três meses… e a certeza de que você é uma das melhores partes da minha vida.
+Eu te amo muito.`;
+
+const carta = document.getElementById('carta');
+const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
+
+mostrarCartaBtn.onclick = () => {
+    mostrarCartaBtn.style.display = 'none';
+    carta.style.display = 'block';
+    let i = 0;
+    const interval = setInterval(() => {
+        carta.innerText += cartaText[i];
+        i++;
+        if(i >= cartaText.length) clearInterval(interval);
+    }, 30); // velocidade da digitação
+};
 </script>
 
 </body>
