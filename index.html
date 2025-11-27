@@ -10,6 +10,7 @@
         font-family: "Arial", sans-serif;
         background: #f7e6ff;
         text-align: center;
+        overflow-x: hidden;
     }
     #content {
         display: none;
@@ -30,6 +31,11 @@
         border: none;
         border-radius: 12px;
         cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #8a00cc;
+        transform: scale(1.05);
     }
     #passwordScreen {
         position: fixed;
@@ -66,6 +72,22 @@
         color: #541a66;
         white-space: pre-wrap;
     }
+    #contadorDias {
+        margin-top: 40px;
+        font-size: 22px;
+        color: #541a66;
+    }
+    .heart {
+        position: fixed;
+        font-size: 20px;
+        z-index: 0;
+        pointer-events: none;
+        animation: float 6s linear infinite;
+    }
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
 </style>
 </head>
 <body>
@@ -80,6 +102,7 @@
     <h1>Feliz 3 meses ❤️</h1>
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
     <div id="carta"></div>
+    <div id="contadorDias"></div>
 </div>
 
 <script>
@@ -95,7 +118,7 @@ function checkPassword() {
     }
 }
 
-// Carta com efeito de digitação
+// Carta com digitação
 const cartaText = `Amor, hoje a gente faz 3 meses juntos… e eu juro, parece pouco quando a gente fala, mas quando eu penso em tudo que a gente já viveu, tudo que eu já senti por você, tudo que a gente já construiu… parece muito mais.
 
 Eu olho pra nós duas e fico feliz. De verdade. Feliz por ter te encontrado, por ter você na minha vida, por ter alguém que me faz sentir tanto. Você virou aquele pensamento bom no meio do dia, aquela saudade gostosa, aquele sorriso que aparece do nada.
@@ -120,8 +143,33 @@ mostrarCartaBtn.onclick = () => {
         carta.innerText += cartaText[i];
         i++;
         if(i >= cartaText.length) clearInterval(interval);
-    }, 30); // velocidade da digitação
+    }, 30);
 };
+
+// Função para criar corações flutuando
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = '❤️';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+
+// Contador de dias
+function atualizarContador() {
+    const inicio = new Date("2025-08-27");
+    const hoje = new Date();
+    const diffTime = hoje - inicio;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("contadorDias").innerText = `Estamos juntos há ${diffDays} dias ❤️`;
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
 </script>
 
 </body>
