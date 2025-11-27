@@ -4,124 +4,104 @@
 <meta charset="UTF-8">
 <title>Surpresa ❤️</title>
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: "Arial", sans-serif;
-        background: #f7e6ff;
-        text-align: center;
-        overflow-x: hidden;
-    }
-    #content {
-        display: none;
-        padding: 50px 20px;
-        color: #541a66;
-    }
-    h1 {
-        font-size: 48px;
-        color: #b300ff;
-        margin-bottom: 20px;
-    }
-    button {
-        margin-top: 40px;
-        padding: 16px 30px;
-        background: #b300ff;
-        color: white;
-        font-size: 20px;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    button:hover {
-        background: #8a00cc;
-        transform: scale(1.05);
-    }
-    #passwordScreen {
-        position: fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        background: rgba(247,230,255,0.95);
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #passwordScreen input {
-        padding: 12px 20px;
-        font-size: 18px;
-        border-radius: 10px;
-        border: 2px solid #b300ff;
-        margin-top: 20px;
-        outline: none;
-    }
-    #carta {
-        margin-top:40px;
-        display:none;
-        text-align:left;
-        max-width:700px;
-        margin-left:auto;
-        margin-right:auto;
-        background: rgba(255,255,255,0.8);
-        padding:30px;
-        border-radius:20px;
-        font-size: 20px;
-        line-height: 1.6;
-        color: #541a66;
-        white-space: pre-wrap;
-    }
-    #contadorDias {
-        margin-top: 40px;
-        font-size: 22px;
-        color: #541a66;
-        position: relative;
-        display: inline-block;
-        transition: color 0.5s;
-    }
-    .heart {
-        position: fixed;
-        font-size: 20px;
-        z-index: 0;
-        pointer-events: none;
-        animation: float 6s linear infinite;
-    }
-    @keyframes float {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-    .contador-heart {
-        position: absolute;
-        font-size: 16px;
-        pointer-events: none;
-        animation: floatMini 1s forwards;
-    }
-    @keyframes floatMini {
-        0% { transform: translateY(0) scale(1); opacity: 1; }
-        100% { transform: translateY(-30px) scale(0.5); opacity: 0; }
-    }
-    .pulse {
-        animation: pulse 0.3s;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.4); }
-        100% { transform: scale(1); }
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background: #f7e6ff;
+    text-align: center;
+    overflow-x: hidden;
+}
+#content {
+    display: none;
+    padding: 50px 20px;
+    color: #541a66;
+}
+h1 {
+    font-size: 48px;
+    color: #b300ff;
+    margin-bottom: 20px;
+}
+button {
+    margin-top: 40px;
+    padding: 16px 30px;
+    background: #b300ff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover {
+    background: #8a00cc;
+    transform: scale(1.05);
+}
+#passwordScreen {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(247,230,255,0.95);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#passwordScreen input {
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #b300ff;
+    margin-top: 20px;
+    outline: none;
+}
+#euTeAmo, #carta {
+    margin-top:40px;
+    text-align:left;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+    background: rgba(255,255,255,0.8);
+    padding:30px;
+    border-radius:20px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #541a66;
+    white-space: pre-wrap;
+    display:none;
+}
+#contadorDias {
+    margin-top: 40px;
+    font-size: 22px;
+    color: #541a66;
+}
+.heart {
+    position: fixed;
+    font-size: 20px;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 6s linear infinite;
+}
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
 
 <div id="passwordScreen">
-    <h1>ih amor, qual é a senha? </h1>
+    <h1>Digite nossa data 💌</h1>
     <input type="text" id="passwordInput" placeholder="dd/mm/aaaa">
     <button onclick="checkPassword()">Abrir surpresa</button>
 </div>
 
 <div id="content">
-    <h1>Feliz 3 meses neném ❤️</h1>
+    <h1>Feliz 3 meses ❤️</h1>
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
+    <div id="euTeAmo"></div>
     <div id="carta"></div>
     <div id="contadorDias"></div>
 </div>
@@ -135,8 +115,39 @@ function checkPassword() {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
     } else {
-        alert("como assim vc errrou amor? :( ");
+        alert("Senha incorreta! Tente novamente 💌");
     }
+}
+
+// Coração gigante + linha especial
+const coracaoGigante = `
+__________♥♥♥♥♥♥__________♥♥♥♥♥♥
+_______♥♥♥♥♥♥♥♥♥♥______♥♥♥♥♥♥♥♥♥♥
+_____♥♥♥♥♥♥♥♥♥♥♥♥♥♥___♥♥♥♥♥♥♥♥♥♥♥♥
+_____♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥_♥♥♥♥♥♥♥♥♥♥♥♥♥
+_____♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+______♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+_______♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+_________♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+____________♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+_______________♥♥♥♥♥♥♥♥♥♥♥♥
+_________________♥♥♥♥♥♥♥♥♥
+__________________♥♥♥♥♥♥
+___________________♥♥♥♥
+___________________♥♥♥
+__________________♥♥
+_________________♥
+_______________♥
+
+★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★
+♥▒♥▒♥▒♥▒♥▒♥ EU TE AMO!♥▒♥▒♥▒♥▒♥▒♥
+★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★`;
+
+// Gerar 300 linhas de "EU TE AMO = ♥"
+let euTeAmoText = "";
+for(let k=0; k<300; k++){
+    if(k%10===0) euTeAmoText += "\n"; // pequena quebra de linha a cada 10
+    euTeAmoText += ". EU TE AMO = ♥\n";
 }
 
 // Carta com digitação
@@ -153,18 +164,30 @@ Eu não sei onde tudo isso vai chegar, mas eu sei que hoje, agora, nesse instant
 Três meses… e a certeza de que você é uma das melhores partes da minha vida.
 Eu te amo muito.`;
 
-const carta = document.getElementById('carta');
+const euTeAmoDiv = document.getElementById('euTeAmo');
+const cartaDiv = document.getElementById('carta');
 const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
 
 mostrarCartaBtn.onclick = () => {
     mostrarCartaBtn.style.display = 'none';
-    carta.style.display = 'block';
+    euTeAmoDiv.style.display = 'block';
+    let textoCompleto = coracaoGigante + "\n" + euTeAmoText;
     let i = 0;
-    const interval = setInterval(() => {
-        carta.innerText += cartaText[i];
+    const interval1 = setInterval(() => {
+        euTeAmoDiv.innerText += textoCompleto[i];
         i++;
-        if(i >= cartaText.length) clearInterval(interval);
-    }, 30);
+        if(i >= textoCompleto.length){
+            clearInterval(interval1);
+            // Inicia digitação da carta
+            cartaDiv.style.display = 'block';
+            let j = 0;
+            const interval2 = setInterval(() => {
+                cartaDiv.innerText += cartaText[j];
+                j++;
+                if(j >= cartaText.length) clearInterval(interval2);
+            }, 30);
+        }
+    }, 20);
 };
 
 // Função para criar corações flutuando
@@ -179,38 +202,21 @@ function createHeart() {
 }
 setInterval(createHeart, 400);
 
-// Contador de dias fofo
-const contador = document.getElementById("contadorDias");
-let lastColor = 0;
+// Contador de dias, horas, minutos e segundos
 function atualizarContador() {
-    const inicio = new Date("2025-08-27");
-    const hoje = new Date();
-    
-    // Diferença em milissegundos
-    const diffTime = hoje - inicio;
+    const inicio = new Date("2025-08-27T00:00:00");
+    const agora = new Date();
+    let diff = Math.floor((agora - inicio) / 1000);
 
-    // Converte para dias e adiciona 1 para contar o dia inicial
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+    const dias = Math.floor(diff / 86400);
+    diff %= 86400;
+    const horas = Math.floor(diff / 3600);
+    diff %= 3600;
+    const minutos = Math.floor(diff / 60);
+    const segundos = diff % 60;
 
-    // Pulinho
-    contador.classList.add("pulse");
-    setTimeout(() => contador.classList.remove("pulse"), 300);
-
-    // Cor aleatória
-    lastColor = (lastColor + 1) % 360;
-    contador.style.color = `hsl(${lastColor}, 80%, 40%)`;
-
-    // Atualiza texto
-    contador.innerText = `Estamos juntos há ${diffDays} dias ❤️`;
-
-    // Mini coração flutuando
-    const miniHeart = document.createElement("div");
-    miniHeart.className = "contador-heart";
-    miniHeart.innerText = "❤️";
-    miniHeart.style.left = (contador.offsetWidth / 2 + Math.random()*30 - 15) + "px";
-    miniHeart.style.top = "-10px";
-    contador.appendChild(miniHeart);
-    setTimeout(() => miniHeart.remove(), 1000);
+    document.getElementById("contadorDias").innerText = 
+        `Estamos juntos há ${dias} dias, ${horas}h ${minutos}m ${segundos}s ❤️`;
 }
 
 setInterval(atualizarContador, 1000);
