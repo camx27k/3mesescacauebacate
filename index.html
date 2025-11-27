@@ -11,12 +11,13 @@
         background: linear-gradient(135deg, #f7e6ff, #ffe6f0);
         text-align: center;
         overflow-x: hidden;
+        overflow-y: hidden; /* evita scroll e mexer a página */
     }
     #content {
         display: none;
         padding: 50px 20px;
         color: #541a66;
-        position: relative; /* conteúdo fixo, não mexe */
+        position: relative;
         z-index: 1;
     }
     h1 {
@@ -59,7 +60,7 @@
         100% { transform: scale(1); }
     }
     .heart {
-        position: absolute; /* não afeta o conteúdo principal */
+        position: fixed; /* corações não mexem a página */
         font-size: 24px;
         z-index: 0;
         pointer-events: none;
@@ -211,7 +212,7 @@ mostrarCartaBtn.onclick = () => {
         carta.innerText += cartaText[i];
         i++;
         if(i >= cartaText.length) clearInterval(interval);
-    }, 30); // velocidade da digitação
+    }, 30);
 };
 </script>
 
