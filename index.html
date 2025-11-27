@@ -92,13 +92,13 @@ button:hover {
 <body>
 
 <div id="passwordScreen">
-    <h1>ih neném, qual é a senha?</h1>
+    <h1>iih neném, qual é a senha?</h1>
     <input type="text" id="passwordInput" placeholder="dd/mm/aaaa">
     <button onclick="checkPassword()">Abrir surpresa</button>
 </div>
 
 <div id="content">
-    <h1>Feliz 3 meses ❤️</h1>
+    <h1>Feliz 3 meses amor da minha vida ❤️</h1>
     <button id="mostrarCartaBtn">Abrir Carta 💖</button>
     <div id="euTeAmo"></div>
     <div id="carta"></div>
@@ -114,7 +114,7 @@ function checkPassword() {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
     } else {
-        alert("poxa amor, errou a senha 😔");
+        alert("ih neném, errou a senha 😔");
     }
 }
 
@@ -142,10 +142,45 @@ _______________♥
 ♥▒♥▒♥▒♥▒♥▒♥ EU TE AMO!♥▒♥▒♥▒♥▒♥▒♥
 ★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★\`·..·´★`;
 
-// Texto gigante "EU TE AMO = ♥" sem digitação
+// Texto “EU TE AMO = ♥” literal 700x
+const euTeAmoBloco = `. EU TE AMO = ♥  
+. EU TE AMO = ♥  
+. EU TE AMO = ♥  
+.. EU TE AMO = ♥  
+... EU TE AMO = ♥  
+.... EU TE AMO = ♥  
+..... EU TE AMO = ♥  
+...... EU TE AMO = ♥  
+....... EU TE AMO = ♥  
+........ EU TE AMO = ♥  
+........ EU TE AMO = ♥  
+........ EU TE AMO = ♥  
+....... EU TE AMO = ♥  
+...... EU TE AMO = ♥  
+..... EU TE AMO = ♥  
+.... EU TE AMO = ♥  
+... EU TE AMO = ♥  
+.. EU TE AMO = ♥  
+. EU TE AMO = ♥  
+. EU TE AMO = ♥  
+. EU TE AMO = ♥  
+.. EU TE AMO = ♥  
+... EU TE AMO = ♥  
+.... EU TE AMO = ♥  
+..... EU TE AMO = ♥  
+...... EU TE AMO = ♥  
+....... EU TE AMO = ♥  
+........ EU TE AMO = ♥  
+........ EU TE AMO = ♥  
+........ EU TE AMO = ♥  
+....... EU TE AMO = ♥  
+...... EU TE AMO = ♥  
+..... EU TE AMO = ♥\n`;
+
+// Repetir 700 vezes
 let euTeAmoText = "";
-for(let k=0; k<300; k++){
-    euTeAmoText += ". EU TE AMO = ♥\n";
+for(let i=0;i<700;i++){
+    euTeAmoText += euTeAmoBloco;
 }
 
 // Carta com digitação
@@ -207,7 +242,7 @@ function atualizarContador() {
     const segundos = diff % 60;
 
     document.getElementById("contadorDias").innerText = 
-        `Estamos juntos há ${dias} dias, ${horas}h ${minutos}m ${segundos}s ❤️`;
+        `Tá me aguentando há${dias} dias, ${horas}h ${minutos}m ${segundos}s ❤️`;
 }
 
 setInterval(atualizarContador, 1000);
